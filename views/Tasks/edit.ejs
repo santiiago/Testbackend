@@ -1,0 +1,27 @@
+<body>
+    <div class="container">
+        <form action="/tasks/<%= tasks[0].id %>" method="POST">
+            <h3>Tareas</h3>
+            <%= tasks[0].task_name%>
+            <label for="task_name">Nombre Tarea</label>
+            <input type="text" class="" name="task_name" id="task_name" value="<%= tasks[0].task_name%>">
+
+            <label for="task_priority">Prioridad</label>
+            <input type="number" class="" name="task_priority" id="task_priority" value="<%= tasks[0].task_priority%>">
+
+            <label for="date_expired">Fecha de vencimiento</label>
+            <input type="date" class="" name="date_expired" id="date_expired" value="<%= tasks[0].date_expired%>">
+
+            <select name="owner" id="owner" value="<%= tasks[0].owner%>">
+                <% _.each(users, function(users) { %>
+                    <option value="<%= users.id %>"><%= users.email %></option>
+                <% }) %>
+            </select>
+
+            <div>
+                <a href="/tasks"><button class="btn btn-sm btn-warning light-blue lighten-2" type="button">Atrás</button></a>
+                <button class="btn btn-sm btn-warning light-blue lighten-2" type="submit">Editar</button>
+            </div>
+        </form>
+    </div>
+</body>

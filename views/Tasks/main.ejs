@@ -1,0 +1,83 @@
+<div class="container">
+        <div class="row">
+            <div class="col m6">
+                <h3>Tareas</h3>
+            </div>
+            <div class="col m6 new-user">
+                <a href="#modal1" class="btn btn-sm btn-warning light-blue lighten-2 waves-effect waves-light btn modal-trigger">Crear Nueva tarea</a>
+            </div>
+        </div>
+    <table class='table'>
+        <tr>
+            <th>ID</th>
+            <th>Nombre tarea</th>
+            <th>Prioridad</th>
+            <th>Propietario</th>
+            <th>Fecha expiración</th>
+            <th>Fecha Creación</th>
+            <th>Fecha ultima actualización</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        <% _.each(tasks, function(tasks) { %>
+            <tr data-id="<%= tasks.id %>" data-model="tasks">
+                <td>
+                    <%= tasks.id %>
+                </td>
+                <td>
+                    <%= tasks.task_name %>
+                </td>
+                <td>
+                    <%= tasks.task_priority %>
+                </td>
+                <td>
+                    <%= tasks.owner.email %>
+                </td>
+                <td>
+                    <%= tasks.date_expired %>
+                </td>
+                <td>
+                    <%= tasks.createdAt %>
+                </td>
+                <td>
+                    <%= tasks.updatedAt %>
+                </td>
+                <td>
+                    <a href="/tasks/edit/<%= tasks.id %>" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a href="/tasks/destroy/<%= tasks.id %>" class="btn btn-sm btn-warning">Delete</a>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+    <br>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <form action="create" method="post">
+            <div class="modal-content">
+                <h4>Tareas</h4>
+                <label for="task_name">Nombre Tarea</label>
+                <input type="text" class="" name="task_name" id="task_name">
+        
+                <label for="task_priority">Prioridad</label>
+                <input type="number" class="" name="task_priority" id="task_priority">
+        
+                <label for="date_expired">Fecha de vencimiento</label>
+                <input type="date" class="" name="date_expired" id="date_expired">
+        
+                <select name="owner" id="owner">
+                    <% _.each(users, function(users) { %>
+                        <option value="<%= users.id %>"><%= users.email %></option>
+                    <% }) %>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <a href="/tasks"><button class="btn btn-sm btn-warning light-blue lighten-2 " type="button">Atrás</button></a>
+                    <button class="btn btn-sm btn-warning light-blue lighten-2 " type="submit">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<body>
+    <div class="container">
+        <form action="/users/<%= users[0].id %>" method="POST">
+            <h4>Actualizar Usuario</h4>
+    
+            <label for="email">Email:</label>
+            <input type="text" class="" name="email" id="email" value="<%= users[0].email %>">
+    
+            <div>
+                <a href="/users"><button class="btn btn-sm btn-warning light-blue lighten-2">Atrás</button></a>
+                <button class="btn btn-sm btn-warning light-blue lighten-2" type="submit">Editar</button>
+            </div>
+        </form>
+    </div>
+</body>

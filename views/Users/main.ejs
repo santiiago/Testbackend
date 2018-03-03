@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+        <div class="col m6">
+            <h3>Usuarios</h3>
+        </div>
+        <div class="col m6 new-user">
+            <a href="#modal1" class="btn btn-sm btn-warning light-blue lighten-2 waves-effect waves-light btn modal-trigger">Crear Nuevo Usuario</a>
+        </div>
+    </div>
+    <table class='table striped'>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Fecha creación</th>
+            <th>Fecha ultima modificación</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        <% _.each(users, function(users) { %>
+        <tr data-id="<%= users.id %>" data-model="users">
+            <td><%= users.id %></td>
+            <td><%= users.email %></td>
+            <td><%= users.createdAt %></td>
+            <td><%= users.updatedAt %></td>
+            <td><a href="/users/edit/<%= users.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+            <td><a href="/users/destroy/<%= users.id %>" class="btn btn-sm btn-warning">Delete</a></td>
+        </tr>
+        <% }) %>
+    </table>
+    <br>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <form action="create" method="post">
+            <div class="modal-content">
+                
+                <h4>Crear Usuario</h4>
+        
+                <label for="email">Usuario:</label>
+                <input type="text" class="" name="email" id="email">
+        
+                <label for="Password">Contraseña:</label>
+                <input type="password" class="" name="password" id="password">
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <a href="/users"><button class="btn btn-sm btn-warning light-blue lighten-2 " type="button">Atrás</button></a>
+                    <button class="btn btn-sm btn-warning light-blue lighten-2 " type="submit">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<body>
+    <form action="create" method="post">
+        <h1>Tareas</h1>
+        <label for="task_name">Nombre Tarea</label>
+        <input type="text" class="" name="task_name" id="task_name">
+
+        <label for="task_priority">Prioridad</label>
+        <input type="integer" class="" name="task_priority" id="task_priority">
+
+        <label for="date_expired">Fecha de vencimiento</label>
+        <input type="date" class="" name="date_expired" id="date_expired">
+
+        <select name="owner" id="owner">
+            <% _.each(users, function(users) { %>
+                <option value="<%= users.id %>"><%= users.email %></option>
+            <% }) %>
+        </select>
+
+        <div>
+            <a href="/tasks"><button type="button">Atrás</button></a>
+            <button type="submit">Crear</button>
+        </div>
+    </form>
+</body>
