@@ -25,6 +25,16 @@ module.exports = {
       collection: 'Tasks',
       via: 'owner'
     }
+  },
+
+  attemptLogin: function (inputs, cb) {
+    // Create a user
+    Users.findOne({
+      email: inputs.email,
+      // TODO: But encrypt the password first
+      password: inputs.password
+    })
+    .exec(cb);
   }
 };
 

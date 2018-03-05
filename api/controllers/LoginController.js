@@ -7,7 +7,13 @@
 
 module.exports = {
     login: function(req, res) {
-        return res.view()
+        
+        return res.login({
+            email: req.param('email'),
+            password: req.param('password'),
+            successRedirect: '/',
+            invalidRedirect: '/users'
+        });
     }
 };
 
